@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MvpForAndroid</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_new_person">NewPersonActivity</string>
+
+    <string name="number_of_persons">Number of persons: </string>
+    <string name="name">Name:</string>
+
+</resources>
