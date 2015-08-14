@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -28,7 +27,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void createView() {
-        numberOfPersons = (TextView) findViewById(R.id.numberOfPersons);
+        numberOfPersons = (TextView) findViewById(R.id.numberOfPersonsTextView);
     }
 
     private void createPresenter() {
@@ -40,7 +39,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.updateView();
+        presenter.refresh();
     }
 
     @Override
@@ -65,8 +64,12 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onNewPersonPresed(View view) {
-        presenter.getNewPerson();
+    public void onClickNewPerson(View view) {
+        presenter.newPerson();
+    }
+
+    public void onClickPersons(View view) {
+        presenter.showPersons();
     }
 
     public void update(List<Person> persons) {
@@ -75,6 +78,11 @@ public class MainActivity extends ActionBarActivity {
 
     public void openNewPersonView() {
         Intent intent = new Intent(this, NewPersonActivity.class);
+        startActivity(intent);
+    }
+
+    public void openPersonsView() {
+        Intent intent = new Intent(this, PersonsActivity.class);
         startActivity(intent);
     }
 }

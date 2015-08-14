@@ -1,44 +1,55 @@
 package com.example.bence.mvpforandroid;
 
-import android.app.AlertDialog;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class NewPersonActivity extends ActionBarActivity {
+public class PersonsActivity extends ActionBarActivity {
 
-    private NewPersonPresenter presenter;
+    private PersonsPresenter presenter;
 
-    private TextView name;
+    private ListView personsListView;
+    private ArrayAdapter personsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_person);
+        setContentView(R.layout.activity_persons);
 
         createView();
         createPresenter();
     }
 
     private void createView() {
-        name = (TextView) findViewById(R.id.nameTextView);
+        personsListView = (ListView) findViewById(R.id.personsListView);
+
+        personsAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, new ArrayList<Person>());
+        personsListView.setAdapter(personsAdapter);
     }
 
     private void createPresenter() {
-        presenter = new NewPersonPresenter();
+        presenter = new PersonsPresenter();
         presenter.setModel(ModelFactory.getInstance());
         presenter.setView(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.refresh();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_new_person, menu);
+        getMenuInflater().inflate(R.menu.menu_list_persons, menu);
         return true;
     }
 
@@ -57,23 +68,9 @@ public class NewPersonActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClickOk(View view) {
-        Person person = new Person();
-        person.setName(name.getText().toString());
-        presenter.createNewPerson(person);
-    }
-
-    public void onClickCancel(View view) {
-        presenter.cancel();
-    }
-
-    public void close() {
-        finish();
-    }
-
-    public void showErrorMessage(String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(message).setPositiveButton("Ok", null);
-        builder.create().show();
+    public void update(List<Person> persons) {
+        personsAdapter.clear();
+        personsAdapter.addAll(persons);
+        personsAdapter.notifyDataSetChanged();
     }
 }

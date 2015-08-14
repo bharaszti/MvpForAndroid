@@ -20,7 +20,7 @@ public class NewPersonPresenter {
             model.newPerson(person);
             view.close();
         } catch (ValidationException e) {
-            view.showErrorMessage("Failed to create", e.getMessage());
+            view.showErrorMessage(e.getMessage());
         }
     }
 

@@ -7,17 +7,28 @@
 
     <TextView android:text="@string/number_of_persons" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/numberOfPersons" />
+        android:id="@+id/numberOfPersonsTextView" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Person"
         android:id="@+id/newPersonButton"
-        android:onClick="onNewPersonPresed"
-        android:layout_below="@+id/numberOfPersons"
+        android:onClick="onClickNewPerson"
+        android:layout_below="@+id/numberOfPersonsTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="46dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Persons"
+        android:id="@+id/personsButton"
+        android:onClick="onClickPersons"
+        android:layout_below="@+id/newPersonButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="51dp" />
 
 </RelativeLayout>

@@ -6,5 +6,8 @@
 
     <string name="number_of_persons">Number of persons: </string>
     <string name="name">Name:</string>
+    <string name="title_activity_list_persons">ListPersonsActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>

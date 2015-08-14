@@ -4,12 +4,12 @@ package com.example.bence.mvpforandroid;
  * Created by bence on 12.08.15.
  */
 public class ModelFactory {
-    private static Model INSTANCE = null;
+    private static Model MODEL_INSTANCE = null;
 
     public static Model getInstance() {
-        if (INSTANCE  == null) {
-            INSTANCE = new Model();
+        if (MODEL_INSTANCE == null) {
+            MODEL_INSTANCE = new Model();
         }
-        return INSTANCE;
+        return MODEL_INSTANCE;
     }
 }

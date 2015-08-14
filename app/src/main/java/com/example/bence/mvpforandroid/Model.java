@@ -21,14 +21,14 @@ public class Model {
 
     private void validateNotEmpty(Person person) throws ValidationException {
         if (person == null || person.getName().isEmpty()) {
-            throw new ValidationException("Name should not be empty!");
+            throw new ValidationException("Enter a name!");
         }
     }
 
     private void validateUnique(Person person) throws ValidationException {
         for (Person current : persons) {
             if (current.getName().equals(person.getName())) {
-                throw new ValidationException("Person with this name already exists.");
+                throw new ValidationException("Person with this name already exists!");
             }
         }
     }
