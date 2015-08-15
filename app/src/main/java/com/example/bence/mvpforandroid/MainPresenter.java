@@ -23,7 +23,7 @@ public class MainPresenter {
         view.openNewPersonView();
     }
 
-    public void showPersons() {
+    public void openPersons() {
         view.openPersonsView();
     }
 }

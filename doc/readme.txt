@@ -36,3 +36,17 @@ Feature: List persons
     - open ListPersonsView
     - populate ListView with persons from model
 
+
+Feature: Edit person
+----------------------------
+* should_OpenEditPersonViewFromPersonsView
+    - add onClick listener to ListView
+    - open EditPersonView
+
+* should_LoadPersonIntoEditPersonView
+
+* should_SavePersonAndReturnToMainView
+
+* should_RejectSavingInEditPersonView_For_EmptyName
+
+* should_RejectSavingInEditPersonView_For_AlreadyExistingName

@@ -1,9 +1,12 @@
 package com.example.bence.mvpforandroid;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -32,6 +35,17 @@ public class PersonsActivity extends ActionBarActivity {
 
         personsAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, new ArrayList<Person>());
         personsListView.setAdapter(personsAdapter);
+
+        personsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Person person = (Person) personsAdapter.getItem(position);
+                presenter.editPerson(person.getId());
+            }
+        });
+
+
     }
 
     private void createPresenter() {
@@ -72,5 +86,11 @@ public class PersonsActivity extends ActionBarActivity {
         personsAdapter.clear();
         personsAdapter.addAll(persons);
         personsAdapter.notifyDataSetChanged();
+    }
+
+    public void openEditPersonView(int id) {
+        Intent intent = new Intent(this, EditPersonActivity.class);
+        intent.putExtra(EditPersonActivity.PERSON_ID, id);
+        startActivity(intent);
     }
 }

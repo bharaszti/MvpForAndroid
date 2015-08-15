@@ -1,5 +1,6 @@
 package com.example.bence.mvpforandroid;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,44 +9,48 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.List;
 
+public class EditPersonActivity extends ActionBarActivity {
 
-public class MainActivity extends ActionBarActivity {
+    protected static final String PERSON_ID = "person_id";
 
-    private TextView numberOfPersons;
+    private EditPersonPresenter presenter;
 
-    private MainPresenter presenter;
+    private TextView name;
+    private Person person;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_edit_person);
 
         createView();
         createPresenter();
     }
 
     private void createView() {
-        numberOfPersons = (TextView) findViewById(R.id.numberOfPersonsTextView);
+        name = (TextView) findViewById(R.id.nameTextView);
     }
 
     private void createPresenter() {
-        presenter = new MainPresenter();
+        presenter = new EditPersonPresenter();
         presenter.setModel(ModelFactory.getInstance());
         presenter.setView(this);
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        presenter.refresh();
+    protected void onStart() {
+        super.onStart();
+
+        Intent intent = getIntent();
+        Integer id = intent.getIntExtra(EditPersonActivity.PERSON_ID, -1);
+        presenter.loadPerson(id);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_edit_person, menu);
         return true;
     }
 
@@ -64,25 +69,29 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClickNewPerson(View view) {
-        presenter.newPerson();
+    public void onClickOk(View view) {
+        person.setName(name.getText().toString());
+        presenter.savePerson(person);
     }
 
-    public void onClickPersons(View view) {
-        presenter.openPersons();
+    public void onClickCancel(View view) {
+        presenter.cancel();
     }
 
-    public void update(List<Person> persons) {
-        numberOfPersons.setText("Number of persons: " + persons.size());
+    public void update(Person person) {
+        this.person = person;
+        name.setText(person.getName());
     }
 
-    public void openNewPersonView() {
-        Intent intent = new Intent(this, NewPersonActivity.class);
-        startActivity(intent);
+
+    public void close() {
+        finish();
     }
 
-    public void openPersonsView() {
-        Intent intent = new Intent(this, PersonsActivity.class);
-        startActivity(intent);
+    public void showErrorMessage(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message).setPositiveButton("Ok", null);
+        builder.create().show();
     }
+
 }

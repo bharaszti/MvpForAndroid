@@ -18,4 +18,9 @@ public class PersonsPresenter {
     public void refresh() {
         view.update(model.getPersons());
     }
+
+    public void editPerson(int id) {
+        view.openEditPersonView(id);
+
+    }
 }

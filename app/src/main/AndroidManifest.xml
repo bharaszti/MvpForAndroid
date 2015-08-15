@@ -24,6 +24,10 @@
             android:name=".PersonsActivity"
             android:label="@string/title_activity_list_persons" >
         </activity>
+        <activity
+            android:name=".EditPersonActivity"
+            android:label="@string/title_activity_edit_person" >
+        </activity>
     </application>
 
 </manifest>

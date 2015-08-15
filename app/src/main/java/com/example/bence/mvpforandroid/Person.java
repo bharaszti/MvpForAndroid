@@ -5,6 +5,24 @@ package com.example.bence.mvpforandroid;
  */
 public class Person {
     private String name;
+    private Integer id;
+
+    public Person() {
+    }
+
+    public Person(Person person) {
+        this.id = person.id;
+        this.name = person.name;
+    }
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -19,3 +37,4 @@ public class Person {
         return name;
     }
 }
+
