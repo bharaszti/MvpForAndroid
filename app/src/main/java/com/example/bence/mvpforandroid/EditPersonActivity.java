@@ -1,6 +1,7 @@
 package com.example.bence.mvpforandroid;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -42,9 +43,11 @@ public class EditPersonActivity extends ActionBarActivity {
     protected void onStart() {
         super.onStart();
 
-        Intent intent = getIntent();
-        Integer id = intent.getIntExtra(EditPersonActivity.PERSON_ID, -1);
-        presenter.loadPerson(id);
+        if (person == null) {
+            Intent intent = getIntent();
+            Integer id = intent.getIntExtra(EditPersonActivity.PERSON_ID, -1);
+            presenter.loadPerson(id);
+        }
     }
 
     @Override
@@ -78,6 +81,10 @@ public class EditPersonActivity extends ActionBarActivity {
         presenter.cancel();
     }
 
+    public void onClickDelete(View view) {
+        presenter.delete();
+    }
+
     public void update(Person person) {
         this.person = person;
         name.setText(person.getName());
@@ -94,4 +101,18 @@ public class EditPersonActivity extends ActionBarActivity {
         builder.create().show();
     }
 
+    public void openDeleteConfirmation() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Delete person?");
+
+        builder.setPositiveButton("Delete",
+                new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                presenter.deleteConfirmed(person.getId());
+            }
+        });
+
+        builder.setNegativeButton("Cancel", null);
+        builder.create().show();
+    }
 }

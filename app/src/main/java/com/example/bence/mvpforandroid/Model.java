@@ -61,4 +61,8 @@ public class Model {
         return nextId++;
     }
 
+    public void deletePerson(Integer id) {
+        Person person = getPersonById(id);
+        persons.remove(person);
+    }
 }

@@ -38,6 +38,16 @@
         android:id="@+id/okButton"
         android:onClick="onClickOk"
         android:layout_alignTop="@+id/cancelButton"
+        android:layout_toRightOf="@+id/nameTextView"
+        android:layout_toEndOf="@+id/nameTextView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:id="@+id/deleteButton"
+        android:onClick="onClickDelete"
+        android:layout_alignTop="@+id/okButton"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

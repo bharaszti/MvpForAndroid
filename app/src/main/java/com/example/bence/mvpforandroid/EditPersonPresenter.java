@@ -33,4 +33,12 @@ public class EditPersonPresenter {
         view.close();
     }
 
+    public void delete() {
+        view.openDeleteConfirmation();
+    }
+
+    public void deleteConfirmed(Integer id) {
+        model.deletePerson(id);
+        view.close();
+    }
 }

@@ -50,3 +50,10 @@ Feature: Edit person
 * should_RejectSavingInEditPersonView_For_EmptyName
 
 * should_RejectSavingInEditPersonView_For_AlreadyExistingName
+
+
+Feature: Delete person
+----------------------------
+* should_OpenDeleteConfirmationDialogFromEditPersonView
+
+* should_DeletePersonAfterConfirmationAndReturnToPersonsView
