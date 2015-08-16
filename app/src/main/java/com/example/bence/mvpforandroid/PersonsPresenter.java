@@ -23,4 +23,12 @@ public class PersonsPresenter {
         view.openEditPersonView(id);
 
     }
+
+    public void newPerson() {
+        view.openNewPersonView();
+    }
+
+    public void back() {
+        view.close();
+    }
 }

@@ -57,9 +57,9 @@ public class NewPersonActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClickOk(View view) {
+    public void onClickSave(View view) {
         Person person = new Person();
-        person.setName(name.getText().toString());
+        person.setName(name.getText().toString().trim());
         presenter.createNewPerson(person);
     }
 

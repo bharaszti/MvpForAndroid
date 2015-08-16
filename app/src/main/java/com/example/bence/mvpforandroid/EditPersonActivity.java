@@ -72,8 +72,8 @@ public class EditPersonActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClickOk(View view) {
-        person.setName(name.getText().toString());
+    public void onClickSave(View view) {
+        person.setName(name.getText().toString().trim());
         presenter.savePerson(person);
     }
 
@@ -85,11 +85,14 @@ public class EditPersonActivity extends ActionBarActivity {
         presenter.delete();
     }
 
+    public void onClickReset(View view) {
+        presenter.loadPerson(person.getId());
+    }
+
     public void update(Person person) {
         this.person = person;
         name.setText(person.getName());
     }
-
 
     public void close() {
         finish();

@@ -36,6 +36,10 @@ Feature: List persons
     - open ListPersonsView
     - populate ListView with persons from model
 
+* should_OpenNewPersonViewFromPersonsView
+
+* should_GoBackToMainViewFromPersonsView
+
 
 Feature: Edit person
 ----------------------------
@@ -51,9 +55,12 @@ Feature: Edit person
 
 * should_RejectSavingInEditPersonView_For_AlreadyExistingName
 
+* should_ResetModifiedDataInEditPersonView
+
 
 Feature: Delete person
 ----------------------------
 * should_OpenDeleteConfirmationDialogFromEditPersonView
 
 * should_DeletePersonAfterConfirmationAndReturnToPersonsView
+

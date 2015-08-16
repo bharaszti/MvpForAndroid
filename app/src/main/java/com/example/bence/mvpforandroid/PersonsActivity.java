@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PersonsActivity extends ActionBarActivity {
+public class PersonsActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
     private PersonsPresenter presenter;
 
@@ -32,20 +32,10 @@ public class PersonsActivity extends ActionBarActivity {
 
     private void createView() {
         personsListView = (ListView) findViewById(R.id.personsListView);
+        personsListView.setOnItemClickListener(this);
 
         personsAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, new ArrayList<Person>());
         personsListView.setAdapter(personsAdapter);
-
-        personsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Person person = (Person) personsAdapter.getItem(position);
-                presenter.editPerson(person.getId());
-            }
-        });
-
-
     }
 
     private void createPresenter() {
@@ -82,6 +72,20 @@ public class PersonsActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Person person = (Person) personsAdapter.getItem(position);
+        presenter.editPerson(person.getId());
+    }
+
+    public void onClickNewPerson(View view) {
+        presenter.newPerson();
+    }
+
+    public void onClickBack(View view) {
+        presenter.back();
+    }
+
     public void update(List<Person> persons) {
         personsAdapter.clear();
         personsAdapter.addAll(persons);
@@ -92,5 +96,14 @@ public class PersonsActivity extends ActionBarActivity {
         Intent intent = new Intent(this, EditPersonActivity.class);
         intent.putExtra(EditPersonActivity.PERSON_ID, id);
         startActivity(intent);
+    }
+
+    public void openNewPersonView() {
+        Intent intent = new Intent(this, NewPersonActivity.class);
+        startActivity(intent);
+    }
+
+    public void close() {
+        finish();
     }
 }

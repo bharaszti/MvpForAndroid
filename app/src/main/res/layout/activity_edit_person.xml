@@ -8,7 +8,11 @@
 
     <TextView android:text="@string/name" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="55dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -16,9 +20,11 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/nameTextView"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView" />
+        android:layout_below="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -26,20 +32,19 @@
         android:text="Cancel"
         android:id="@+id/cancelButton"
         android:onClick="onClickCancel"
-        android:layout_below="@+id/nameTextView"
+        android:layout_alignTop="@+id/saveButton"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="50dp" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ok"
-        android:id="@+id/okButton"
-        android:onClick="onClickOk"
-        android:layout_alignTop="@+id/cancelButton"
-        android:layout_toRightOf="@+id/nameTextView"
-        android:layout_toEndOf="@+id/nameTextView" />
+        android:text="Save"
+        android:id="@+id/saveButton"
+        android:onClick="onClickSave"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -47,7 +52,18 @@
         android:text="Delete"
         android:id="@+id/deleteButton"
         android:onClick="onClickDelete"
-        android:layout_alignTop="@+id/okButton"
+        android:layout_below="@+id/nameTextView"
+        android:layout_alignLeft="@+id/saveButton"
+        android:layout_alignStart="@+id/saveButton"
+        android:layout_marginTop="38dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset changes"
+        android:id="@+id/resetButton"
+        android:onClick="onClickReset"
+        android:layout_alignTop="@+id/deleteButton"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
