@@ -1,4 +1,7 @@
-package com.example.bence.mvpforandroid;
+package com.example.bence.mvpforandroid.infrastructure;
+
+import com.example.bence.mvpforandroid.domain.Person;
+import com.example.bence.mvpforandroid.util.ValidationException;
 
 import java.util.ArrayList;
 import java.util.List;

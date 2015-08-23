@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.bence.mvpforandroid.PersonsActivity">
+    tools:context="com.example.bence.mvpforandroid.ui.PersonsActivity">
     <item android:id="@+id/action_new_person"
         android:title="@string/new_person"
         app:showAsAction="ifRoom|withText"/>

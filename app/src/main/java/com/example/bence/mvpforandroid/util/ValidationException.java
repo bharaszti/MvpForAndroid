@@ -1,4 +1,4 @@
-package com.example.bence.mvpforandroid;
+package com.example.bence.mvpforandroid.util;
 
 /**
  * Created by bence on 13.08.15.

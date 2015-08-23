@@ -1,4 +1,4 @@
-package com.example.bence.mvpforandroid;
+package com.example.bence.mvpforandroid.ui;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -10,6 +10,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.bence.mvpforandroid.application.ModelFactory;
+import com.example.bence.mvpforandroid.R;
+import com.example.bence.mvpforandroid.application.EditPersonPresenter;
+import com.example.bence.mvpforandroid.domain.Person;
 
 
 public class EditPersonActivity extends ActionBarActivity {

@@ -1,14 +1,17 @@
-package com.example.bence.mvpforandroid;
+package com.example.bence.mvpforandroid.ui;
 
 import android.app.AlertDialog;
-import android.content.res.Resources;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
+
+import com.example.bence.mvpforandroid.application.ModelFactory;
+import com.example.bence.mvpforandroid.application.NewPersonPresenter;
+import com.example.bence.mvpforandroid.R;
+import com.example.bence.mvpforandroid.domain.Person;
 
 
 public class NewPersonActivity extends ActionBarActivity {

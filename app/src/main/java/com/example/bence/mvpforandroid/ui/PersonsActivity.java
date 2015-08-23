@@ -1,4 +1,4 @@
-package com.example.bence.mvpforandroid;
+package com.example.bence.mvpforandroid.ui;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
@@ -10,6 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.bence.mvpforandroid.application.ModelFactory;
+import com.example.bence.mvpforandroid.application.PersonsPresenter;
+import com.example.bence.mvpforandroid.R;
+import com.example.bence.mvpforandroid.domain.Person;
 
 import java.util.ArrayList;
 import java.util.List;

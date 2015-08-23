@@ -1,4 +1,9 @@
-package com.example.bence.mvpforandroid;
+package com.example.bence.mvpforandroid.application;
+
+import com.example.bence.mvpforandroid.infrastructure.Model;
+import com.example.bence.mvpforandroid.util.ValidationException;
+import com.example.bence.mvpforandroid.domain.Person;
+import com.example.bence.mvpforandroid.ui.NewPersonActivity;
 
 /**
  * Created by bence on 10.08.15.
