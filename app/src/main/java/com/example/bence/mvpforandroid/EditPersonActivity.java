@@ -3,6 +3,7 @@ package com.example.bence.mvpforandroid;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -30,6 +31,10 @@ public class EditPersonActivity extends ActionBarActivity {
     }
 
     private void createView() {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
+
         name = (TextView) findViewById(R.id.nameTextView);
     }
 
@@ -64,21 +69,17 @@ public class EditPersonActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case android.R.id.home:
+                presenter.cancel();
+                return true;
+            case R.id.action_save:
+                person.setName(name.getText().toString().trim());
+                presenter.savePerson(person);
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void onClickSave(View view) {
-        person.setName(name.getText().toString().trim());
-        presenter.savePerson(person);
-    }
-
-    public void onClickCancel(View view) {
-        presenter.cancel();
     }
 
     public void onClickDelete(View view) {

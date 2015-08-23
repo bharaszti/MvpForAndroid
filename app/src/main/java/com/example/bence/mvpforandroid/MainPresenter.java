@@ -26,4 +26,8 @@ public class MainPresenter {
     public void openPersons() {
         view.openPersonsView();
     }
+
+    public void about() {
+        view.openAboutDialog();
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.bence.mvpforandroid;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,6 +32,9 @@ public class PersonsActivity extends ActionBarActivity implements AdapterView.On
     }
 
     private void createView() {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         personsListView = (ListView) findViewById(R.id.personsListView);
         personsListView.setOnItemClickListener(this);
 
@@ -64,11 +68,15 @@ public class PersonsActivity extends ActionBarActivity implements AdapterView.On
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        switch (id) {
+            case android.R.id.home:
+                presenter.back();
+                return true;
+            case R.id.action_new_person:
+                presenter.newPerson();
+                return true;
 
+        }
         return super.onOptionsItemSelected(item);
     }
 

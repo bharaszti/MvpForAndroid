@@ -1,5 +1,6 @@
 package com.example.bence.mvpforandroid;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -57,7 +58,8 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_about) {
+            presenter.about();
             return true;
         }
 
@@ -84,5 +86,14 @@ public class MainActivity extends ActionBarActivity {
     public void openPersonsView() {
         Intent intent = new Intent(this, PersonsActivity.class);
         startActivity(intent);
+    }
+
+    public void openAboutDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        String title = "MVP for Android";
+        String message = "This is little example implementation of the Model View Presenter pattern using Android activities as passive views.\n\n" +
+                "Author: Bence Haraszti\n\n" +
+                "Source code: https://github.com/bharaszti/MvpForAndroid";
+        builder.setTitle(title).setMessage(message).setPositiveButton("Ok", null).create().show();
     }
 }
