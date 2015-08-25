@@ -4,6 +4,9 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -95,10 +98,20 @@ public class MainActivity extends ActionBarActivity {
 
     public void openAboutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setPositiveButton("Close", null);
+
         String title = "MVP for Android";
-        String message = "This is little example implementation of the Model View Presenter pattern using Android activities as passive views.\n\n" +
+        builder.setTitle(title);
+
+        String message = "This is a simple example for the " +
+                "Model View Presenter (passive views) pattern using Android activities.\n\n" +
                 "Author: Bence Haraszti\n\n" +
                 "Source code: https://github.com/bharaszti/MvpForAndroid";
-        builder.setTitle(title).setMessage(message).setPositiveButton("Ok", null).create().show();
+        SpannableString messageWithLink = new SpannableString(message);
+        Linkify.addLinks(messageWithLink, Linkify.ALL);
+        builder.setMessage(messageWithLink);
+
+        AlertDialog dialog = builder.show();
+        ((TextView) dialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
     }
 }
