@@ -1,21 +1,21 @@
 package com.example.bence.mvpforandroid.application;
 
+import com.example.bence.mvpforandroid.application.api.PersonsView;
 import com.example.bence.mvpforandroid.infrastructure.Model;
-import com.example.bence.mvpforandroid.ui.PersonsActivity;
 
 /**
  * Created by bence on 13.08.15.
  */
 public class PersonsPresenter {
     private Model model;
-    private PersonsActivity view;
+    private PersonsView view;
 
     public void setModel(Model model) {
         this.model = model;
     }
 
-    public void setView(PersonsActivity activity) {
-        this.view = activity;
+    public void setView(PersonsView view) {
+        this.view = view;
     }
 
     public void refresh() {

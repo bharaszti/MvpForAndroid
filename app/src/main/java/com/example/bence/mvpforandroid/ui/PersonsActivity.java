@@ -11,16 +11,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.bence.mvpforandroid.application.ModelFactory;
-import com.example.bence.mvpforandroid.application.PersonsPresenter;
 import com.example.bence.mvpforandroid.R;
+import com.example.bence.mvpforandroid.application.PersonsPresenter;
+import com.example.bence.mvpforandroid.application.PresenterFactory;
+import com.example.bence.mvpforandroid.application.api.PersonsView;
 import com.example.bence.mvpforandroid.domain.Person;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class PersonsActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
+public class PersonsActivity extends ActionBarActivity implements PersonsView, AdapterView.OnItemClickListener {
 
     private PersonsPresenter presenter;
 
@@ -32,11 +33,11 @@ public class PersonsActivity extends ActionBarActivity implements AdapterView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_persons);
 
-        createView();
-        createPresenter();
+        presenter = PresenterFactory.createPersonsPresenter(this);
+        createUI();
     }
 
-    private void createView() {
+    private void createUI() {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -45,12 +46,6 @@ public class PersonsActivity extends ActionBarActivity implements AdapterView.On
 
         personsAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, new ArrayList<Person>());
         personsListView.setAdapter(personsAdapter);
-    }
-
-    private void createPresenter() {
-        presenter = new PersonsPresenter();
-        presenter.setModel(ModelFactory.getInstance());
-        presenter.setView(this);
     }
 
     @Override

@@ -12,37 +12,33 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.bence.mvpforandroid.application.MainPresenter;
-import com.example.bence.mvpforandroid.application.ModelFactory;
 import com.example.bence.mvpforandroid.R;
+import com.example.bence.mvpforandroid.application.MainPresenter;
+import com.example.bence.mvpforandroid.application.PresenterFactory;
+import com.example.bence.mvpforandroid.application.api.MainView;
 import com.example.bence.mvpforandroid.domain.Person;
 
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements MainView {
+
+    private MainPresenter presenter;
 
     private TextView numberOfPersons;
 
-    private MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        createView();
-        createPresenter();
+        presenter = PresenterFactory.createMainPresenter(this);
+        createUI();
     }
 
-    private void createView() {
+    private void createUI() {
         numberOfPersons = (TextView) findViewById(R.id.numberOfPersonsTextView);
-    }
-
-    private void createPresenter() {
-        presenter = new MainPresenter();
-        presenter.setModel(ModelFactory.getInstance());
-        presenter.setView(this);
     }
 
     @Override
@@ -107,9 +103,9 @@ public class MainActivity extends ActionBarActivity {
                 "Model View Presenter (passive views) pattern using Android activities.\n\n" +
                 "Author: Bence Haraszti\n\n" +
                 "Source code: https://github.com/bharaszti/MvpForAndroid";
-        SpannableString messageWithLink = new SpannableString(message);
-        Linkify.addLinks(messageWithLink, Linkify.ALL);
-        builder.setMessage(messageWithLink);
+        SpannableString spannableMessage = new SpannableString(message);
+        Linkify.addLinks(spannableMessage, Linkify.ALL);
+        builder.setMessage(spannableMessage);
 
         AlertDialog dialog = builder.show();
         ((TextView) dialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());

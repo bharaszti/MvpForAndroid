@@ -1,23 +1,23 @@
 package com.example.bence.mvpforandroid.application;
 
 import com.example.bence.mvpforandroid.infrastructure.Model;
+import com.example.bence.mvpforandroid.application.api.NewPersonView;
 import com.example.bence.mvpforandroid.util.ValidationException;
 import com.example.bence.mvpforandroid.domain.Person;
-import com.example.bence.mvpforandroid.ui.NewPersonActivity;
 
 /**
  * Created by bence on 10.08.15.
  */
 public class NewPersonPresenter {
     private Model model;
-    private NewPersonActivity view;
+    private NewPersonView view;
 
     public void setModel(Model model) {
         this.model = model;
     }
 
-    public void setView(NewPersonActivity activity) {
-        this.view = activity;
+    public void setView(NewPersonView view) {
+        this.view = view;
     }
 
     public void createNewPerson(Person person) {

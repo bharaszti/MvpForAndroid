@@ -1,4 +1,4 @@
-package com.example.bence.mvpforandroid.application;
+package com.example.bence.mvpforandroid.infrastructure;
 
 import com.example.bence.mvpforandroid.infrastructure.Model;
 

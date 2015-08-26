@@ -8,13 +8,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.bence.mvpforandroid.application.ModelFactory;
-import com.example.bence.mvpforandroid.application.NewPersonPresenter;
 import com.example.bence.mvpforandroid.R;
+import com.example.bence.mvpforandroid.application.NewPersonPresenter;
+import com.example.bence.mvpforandroid.application.PresenterFactory;
+import com.example.bence.mvpforandroid.application.api.NewPersonView;
 import com.example.bence.mvpforandroid.domain.Person;
 
 
-public class NewPersonActivity extends ActionBarActivity {
+public class NewPersonActivity extends ActionBarActivity implements NewPersonView {
 
     private NewPersonPresenter presenter;
 
@@ -25,24 +26,17 @@ public class NewPersonActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_person);
 
-        createView();
-        createPresenter();
+        presenter = PresenterFactory.createNewPersonPresenter(this);
+        createUI();
     }
 
-    private void createView() {
+    private void createUI() {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
         name = (TextView) findViewById(R.id.nameTextView);
     }
-
-    private void createPresenter() {
-        presenter = new NewPersonPresenter();
-        presenter.setModel(ModelFactory.getInstance());
-        presenter.setView(this);
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

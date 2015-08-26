@@ -11,13 +11,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.bence.mvpforandroid.application.ModelFactory;
 import com.example.bence.mvpforandroid.R;
 import com.example.bence.mvpforandroid.application.EditPersonPresenter;
+import com.example.bence.mvpforandroid.application.PresenterFactory;
+import com.example.bence.mvpforandroid.application.api.EditPersonView;
 import com.example.bence.mvpforandroid.domain.Person;
 
 
-public class EditPersonActivity extends ActionBarActivity {
+public class EditPersonActivity extends ActionBarActivity implements EditPersonView {
 
     protected static final String PERSON_ID = "person_id";
 
@@ -31,22 +32,16 @@ public class EditPersonActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_person);
 
-        createView();
-        createPresenter();
+        presenter = PresenterFactory.createEditPresenter(this);
+        createUI();
     }
 
-    private void createView() {
+    private void createUI() {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 
         name = (TextView) findViewById(R.id.nameTextView);
-    }
-
-    private void createPresenter() {
-        presenter = new EditPersonPresenter();
-        presenter.setModel(ModelFactory.getInstance());
-        presenter.setView(this);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.example.bence.mvpforandroid.application;
 
-import com.example.bence.mvpforandroid.ui.EditPersonActivity;
+import com.example.bence.mvpforandroid.application.api.EditPersonView;
 import com.example.bence.mvpforandroid.infrastructure.Model;
 import com.example.bence.mvpforandroid.util.ValidationException;
 import com.example.bence.mvpforandroid.domain.Person;
@@ -10,14 +10,14 @@ import com.example.bence.mvpforandroid.domain.Person;
  */
 public class EditPersonPresenter {
     private Model model;
-    private EditPersonActivity view;
+    private EditPersonView view;
 
     public void setModel(Model model) {
         this.model = model;
     }
 
-    public void setView(EditPersonActivity activity) {
-        this.view = activity;
+    public void setView(EditPersonView view) {
+        this.view = view;
     }
 
     public void loadPerson(Integer id) {
