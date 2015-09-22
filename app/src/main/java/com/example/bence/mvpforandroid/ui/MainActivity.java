@@ -100,7 +100,7 @@ public class MainActivity extends ActionBarActivity implements MainView {
         builder.setTitle(title);
 
         String message = "This is a simple example for the " +
-                "Model View Presenter (passive views) pattern using Android activities.\n\n" +
+                "Model View Presenter (passive view) pattern using Android activities.\n\n" +
                 "Author: Bence Haraszti\n\n" +
                 "Source code: https://github.com/bharaszti/MvpForAndroid";
         SpannableString spannableMessage = new SpannableString(message);
