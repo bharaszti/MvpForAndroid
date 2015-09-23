@@ -96,7 +96,7 @@ public class MainActivity extends ActionBarActivity implements MainView {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setPositiveButton("Close", null);
 
-        String title = "MVP for Android";
+        String title = "About MVP for Android";
         builder.setTitle(title);
 
         String message = "This is a simple example for the " +

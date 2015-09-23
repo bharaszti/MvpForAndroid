@@ -8,9 +8,9 @@
     <TextView android:text="@string/number_of_persons" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/numberOfPersonsTextView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="57dp" />
+        android:layout_marginBottom="30dp"
+        android:layout_above="@+id/newPersonButton"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -18,9 +18,8 @@
         android:text="New Person"
         android:id="@+id/newPersonButton"
         android:onClick="onClickNewPerson"
-        android:layout_below="@+id/numberOfPersonsTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -28,8 +27,8 @@
         android:text="Persons"
         android:id="@+id/personsButton"
         android:onClick="onClickPersons"
-        android:layout_marginTop="60dp"
         android:layout_below="@+id/newPersonButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
 
 </RelativeLayout>
